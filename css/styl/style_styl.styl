@@ -1,0 +1,816 @@
+@import 'jeet/framework'
+@import 'jeet/goodies'
+@font-face {
+  font-family: 'Yanone Kaffeesatz';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'), url(http://themes.googleusercontent.com/static/fonts/yanonekaffeesatz/v4/YDAoLskQQ5MOAgvHUQCcLRTHiN2BPBirwIkMLKUspj4.woff) format('woff');
+}
+
+
+//edit()
+
+/* 
+	Structured according to SMACSS (Scalable Modular Architecture for CSS)
+	See here for more: http://tv.adobe.com/watch/adc-presents-smacss/
+
+	1. Base 	- Reset and default styles
+	2. Layout 	- Header, Main, Footer, Grid and similar
+	3. Modules 	- Content inside specific areas, lists and widgets
+	4. States 	- Hidden, collapsed and JS-related styles
+	5. Theme 	- Additional variations on content (language-related and other)
+
+*/
+
+
+// 	1. BASE
+@import 'reset.css'
+
+body
+	font-family 'Yanone Kaffeesatz'
+	color #A8A8A8
+	background #cacaca
+
+a
+	color #2e8bcc
+	&:hover
+		color #eee
+		text-decoration none
+
+h1
+	font-size 9em
+	margin 0 0 0% 7.5%
+	color #191919
+	text-align left
+
+h1.webdeveloper-title
+	text-align center
+	margin 0
+
+h1.educator-title
+	text-align right
+	margin 0 8.5% 0
+
+h2
+	font-size 5em
+	font-weight bold
+	margin 18% 0 8% 0
+
+h3
+	font-size 2.3em
+	margin 12% 0 0
+	font-weight normal
+
+h3 a
+	text-decoration none
+
+h4
+	font-size 2em
+	margin 9% 0 2% 0
+	font-style italic
+
+p
+	line-height 1.45em
+	font-size 2em
+	font-weight 100
+
+img
+	border 2px solid white
+	box-shadow 0 3px 2px rgba(0,0,0, .15)
+
+.error
+	color red
+
+label
+	font-size 2.5em
+	display block
+	margin 1% 0 1% 0
+	text-align right
+
+label:last-of-type
+	text-align left
+
+input[type=text], input[type=email]
+	border 1px solid #ccc
+	border-radius 3px
+	padding 1% 1%
+	margin-left 2%
+	outline none
+	width 50%
+	box-shadow inset 0 1px 3px rgba(0, 0, 0, .35)
+	vertical-align top
+
+input:focus
+	outline 1px solid #2e8bcc
+
+input[type=submit]
+	font-family 'Yanone Kaffeesatz', sans-serif
+	font-size 2.6em
+	color #bbb
+	float right
+	margin 1% 0 0
+	padding .5% 5%
+	border 1px solid #fff
+	border-radius 3px
+	outline none
+	border-radius 2px
+	background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(250,250,250,1) 50%, rgba(240,240,240,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(240,240,240,1)), color-stop(50%,rgba(250,250,250,1)), color-stop(100%,rgba(240,240,240,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(250,250,250,1) 50%,rgba(240,240,240,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(250,250,250,1) 50%,rgba(240,240,240,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(250,250,250,1) 50%,rgba(240,240,240,1) 100%); /* IE10+ */
+	box-shadow 0 2px 2px rgba(0, 0, 0, .35)
+	&:hover
+		border 1px solid #2e8bcc
+		color #222
+select
+	width 50%
+	padding .5% 1%
+	border-radius 3px
+	vertical-align top
+
+textarea
+	display block
+	width 100%
+	min-height 200px
+	border 1px solid #ccc
+	border-radius 3px
+	padding 1%
+
+textarea:focus
+	outline 1px solid #2e8bcc
+
+/* 
+	2. LAYOUT
+		l-prefix: l-header, l-sidebar
+*/
+
+body
+	width 100%
+	height auto
+	padding 0
+	margin 0
+
+footer
+	text-align center
+	color #ddd
+	font-size 2em
+
+form
+	col(1,1)
+
+.hidden
+	display none
+
+#quotes,
+.quotes, 
+#webdeveloper, 
+#educator, 
+#debater, 
+#contact
+	cf()
+
+#webdeveloper,
+#educator,
+#debater
+	margin 6% 0 0
+
+#l-wrapper
+	position relative
+	center(1600px, 0px)
+	box-shadow 0 2px 3px rgba(0, 0, 0, .15)
+	background #fff
+	margin 2% 0 0
+	padding 0
+
+.l-left-column, 
+.l-right-column
+	span(1,2)
+
+.l-left-column
+	padding 0 1.5% 6% 8%
+
+.l-right-column
+	padding 0 8% 0 1.5%
+
+#scrollMenu
+	display block
+	width 100%
+	height auto
+	background rgba(255, 255, 255, .75)
+	box-shadow 0 2px 3px rgba(0, 0, 0, .15)
+	text-align center
+	margin 0
+	position fixed
+	top 0
+	font-size 2.2em
+	padding 5px 3%	
+	cf()
+	img
+		max-width 35px
+		vertical-align bottom
+		border none
+		box-shadow none
+	a
+		vertical-align top
+		text-decoration none
+		display inline-block
+		margin 2% 1%
+		&:hover
+			color #222
+
+.l-twitter
+	margin 20% 0 0
+
+.l-center
+	center(700px, 0)
+	padding 0
+	h3
+		margin 0 0 2% 0
+		display inline-block
+
+#footer
+	width 100%
+	padding 2% 7%
+	cf()
+	h2
+		margin 0
+#contact
+	col(1,2)
+#books, #cv
+	col(1,2)
+
+.books-list
+	cf()
+	font-size 1.3em
+	list-style-type none
+	padding 0
+	ul
+		list-style-type none
+		padding 0
+		
+.book-item li
+	col(1,3)
+
+/* 
+	3. MODULES
+		btn, btn-small, btn-medium, btn-large
+*/
+
+.main-header-img-hanna,
+.main-header-img-icon
+	box-shadow none
+	border none
+	position absolute
+
+.main-header-img-hanna
+	right 10px
+	top -24px
+
+.main-header-img-icon
+	left 20px
+	top 20px
+
+.main-header-title
+	font-size 9em
+	font-weight bold
+	text-align center
+	color #191919
+	margin 12% 0 0
+	a
+		text-decoration none
+		color #222
+
+.main-navigation
+	margin 4% 0
+	font-size 3em
+	text-align center
+	font-weight 300
+	a
+		margin 0 3%
+		text-decoration none
+		vertical-align top
+		display inline-block
+		&:hover
+			color #aaa
+	img
+		border none
+		box-shadow none
+		vertical-align bottom
+
+.quotes
+	padding 2% 4%	
+	background #191919
+	img
+		border 2px solid #eee
+		box-shadow 0 2px 2px rgba(0, 0, 0, .45)
+	p
+		font-size 1.3em
+		margin 0 0 4% 0
+
+.quotes-testemony
+	col(1,3, 0, 2)
+	cf()
+
+.quotes-testemony-author, 
+.quotes-testemony-author-single
+	stack(l)
+	margin 14% 0 0
+	p
+		margin 10% 0 0
+		text-align right
+
+.quotes-testemony-single
+	col(2,3)
+	offset(1)
+	margin 10% 0 0
+
+.h-card
+	float left
+
+.quotes-testemony-author-image
+	float right
+
+#skills,
+#websites,
+#educator
+	width 100%
+	margin 4% 0
+	h2
+		margin 4% 0 1%
+
+.skills-list
+	col(1,3)
+	margin 0
+	padding 4% 0
+	font-size 2em
+	list-style-type none
+	text-align right
+	span
+		color #2e8bcc
+
+#skill-html5,
+#skill-css3,
+#skill-js,
+#skill-jquery,
+#skill-respd,
+#skill-phpoop,
+#skill-mysql,
+#skill-wordpress,
+#skill-codeigniter,
+#skill-photoshop,
+#skill-illustrator,
+#skill-premiere,
+#skill-audition,
+#skill-sublime
+	cursor pointer
+
+.skills-details
+	padding-left 2%
+	padding-right 2%
+	padding-bottom 1.5%
+	box-shadow inset 0 2px 3px rgba(0,0,0,.25)
+	p, ul
+		font-size 1.5em
+		margin 2% 0
+		padding 0
+	article
+		border-right 2px dashed #ccc
+		border-bottom 2px dashed #ccc
+		border-left 2px dashed #ccc
+		padding 2em
+		cf()
+		img
+			float right
+			margin-left 2%
+			box-shadow none
+.details
+	display none
+
+.websites-list
+	margin 2% 0
+
+.websites-site
+	width 100%
+	height auto
+	position relative
+
+.website-link
+	font-size 1.4em
+	position absolute
+	bottom 18%
+	right 14px
+	padding 0 0 5px 35px
+	background url('../../images/icons/ext-link.png') no-repeat
+
+.website-content p,
+.educator-field p
+	font-size 1.5em
+	margin 0
+
+p.website-description
+	margin 2% 0
+	font-size 1.2em
+
+.website-screenshot
+	width 100%
+	height auto
+	border 1px solid #eee
+	box-shadow 0 1px 2px rgba(0, 0, 0, .15)
+
+.website-tags,
+.media-tags
+	margin 1% 0 4%
+	padding 0
+	li
+		display inline
+		margin 1% 2%
+		font-variant small-caps
+
+.educator
+	margin 3% 0
+	cf()
+	h3
+		margin 0 0 2%
+
+.educator-field,
+.educator-image
+	col(1,3,0,2)
+
+.educator-links,
+.debater-links,
+.media-links
+	font-size 1.3em
+	padding 0 0 0 2%
+	margin 2% 0 4% 1%
+	li
+		line-height 1.25em
+		margin 0 0 3%
+		list-style-type none
+
+.info
+	min-height 300px
+	border 1px solid #ccc
+	box-shadow 0 2px 2px rgba(0, 0, 0, .15)
+	display none
+
+.current
+	display block
+
+.photoshop
+	max-width 450px
+	width 100%
+	border 2px solid #eee
+	box-shadow 0px 2px 2px rgba(0, 0, 0, .45)
+
+#webdeveloper .subtitle
+	margin 0% 4%
+
+.required
+	float left
+
+#slider
+	center()
+	margin 6% 2% 0
+	max-width 640px
+	height 353px
+	position relative
+#slider-shadow
+	margin -361px auto 0 auto
+	max-width 657px
+	height 478px
+	background url('../../images/slider/computer.png') top no-repeat
+#slider-inner
+	width 9999px
+	height 353px
+	margin 0
+	padding 0
+	z-index 0
+	position relative
+	left -640px
+	list-style-type none
+	li
+		float left
+		max-width 640px
+		width 100%
+		padding 0
+		margin 0
+		height 353px
+		background transparent
+		list-style-type none
+		img
+			max-width 640px
+			width 100%
+			height 353px
+
+#slider-mask
+	overflow hidden
+	width 640px
+	height 353px
+
+#goLeft, 
+#goRight
+	width 50px
+	height 43px
+	position absolute
+	top 166px
+	z-index 50
+	transition opacity .3s ease-out
+	opacity 0
+	display block
+	cursor pointer
+	&:hover
+		opacity 1
+#goLeft
+	background url('../../images/slider/arrows.png') no-repeat -50px 0
+	left 10px
+	&:hover
+		background url('../../images/slider/arrows.png') no-repeat 0 0
+#goRight
+	background url('../../images/slider/arrows.png') no-repeat -50px -43px
+	right 10px
+	&:hover
+		background url('../../images/slider/arrows.png') no-repeat 0 -43px
+
+#slider:hover #goLeft,
+#slider:hover #goRight
+	opacity .8
+
+/* 
+	4. STATES
+		is-prefix: is-btn-active, is-btn-hidden
+*/
+
+.rotate img
+	transition-duration 1s
+	transition-property transform
+	overflow hidden
+	margin -5px 0 0 5px
+
+.rotate:hover img
+	transform:rotateY(360deg)
+
+.website-toggle
+	display block
+	position absolute
+	bottom 5px
+	right 10px
+	width 26px
+	height 25px
+	cursor pointer	
+	transition-duration .1s
+	transition-property transform
+
+.website-toggle
+	background url('../../images/websites/arrDown.png') no-repeat
+	&:hover
+		transform:translate(0, 5px)
+
+.is-website-expanded
+	background url('../../images/websites/arrUp.png') no-repeat
+	&:hover
+		transform:translate(0, -5px)
+
+.is-details-expanded
+	color #eee
+
+.website-content
+	display none
+	margin 2% 0
+	padding 2% 4%
+	border-bottom 1px solid #ccc
+
+/* 
+	5. THEME
+		theme-prefix: theme-border, theme-background
+*/
+
+.dark
+	background #191919
+	cf()
+
+// LIGHTBOX EFFECT
+
+#backdrop
+	display none
+	position absolute
+	top 0
+	left 0
+	width 100%
+	height 100%
+	z-index 50
+	opacity 0
+	background rgba(0, 0, 0, .75)
+#box
+	opacity 0
+	display none
+	position absolute
+	top 20%
+	left 30%
+	width 600px
+	height 400px
+	background #eee
+	z-index 51
+	padding 2em
+	border-radius 5px
+	box-shadow 0 2px 2px rgba(0, 0, 0, .35)
+#close
+	float right
+	margin 0 6px 0 0
+	cursor pointer
+
+// WEB DEVELOPER
+
+bp(1400px)
+
+body
+	font-size .9em
+	transition all .2s linear
+img
+	transition all .2s linear
+
+endbp(1251px)
+bp(1250px)
+
+body
+	font-size .8em
+
+.main-header-img-hanna
+	max-width 200px
+
+.main-header-img-icon
+	max-width 120px
+
+.quotes img
+	max-width 90px
+
+endbp(1151px)
+bp(1150px)
+
+body
+	font-size .7em
+
+.main-navigation 
+	a
+		margin 0 2%
+	img
+		max-width 35px
+
+.h-card, 
+.quotes-testemony-author 
+	img
+		width 140px
+		text-align center
+		center()
+	p
+		float none
+		text-align center
+		
+
+endbp(1001px)
+bp(1000px)
+
+.main-header-img-hanna
+	max-width 170px
+
+.main-header-img-icon
+	max-width 80px
+
+.main-header-title
+	font-size 8em
+
+
+endbp(831px)
+bp(830px)
+
+.main-header-img-hanna
+	max-width 150px
+
+.main-header-img-icon
+	max-width 60px
+
+.main-header-title
+	font-size 6em
+
+endbp(781px)
+bp(780px)
+
+.main-navigation 
+	font-size 2.5em
+	a
+		margin 0 1%
+	img
+		max-width 30px
+
+#scrollMenu
+	width 100%
+	height auto
+	left 0px
+	right auto
+	font-size 2em
+	padding 1.7% 0 0
+	a
+		display inline-block
+
+endbp(601px)
+bp(600px)
+
+.main-header-title
+	font-size 4em
+
+.main-navigation 
+	font-size 2em
+
+#scrollMenu
+	font-size 1.7em
+	padding 2% 0 0
+
+endbp(561px)
+bp(560px)
+
+h1
+	font-size 7em
+	margin 0 0 0 1%
+	text-align center
+h1.educator-title
+	text-align center
+
+h2
+	font-size 4em
+	margin 6% 0 0
+
+h3
+	margin 8% 0 0
+
+.main-navigation a
+	margin 2% 1%
+
+.main-header-img-hanna,
+.main-header-img-icon
+	display none
+
+.websites-list
+	padding 0 0 0 2%
+
+#skills h2, 
+#websites h2, 
+#educator h2, 
+#contact h2
+	margin 4% 0 1% 1%
+
+.educator h3
+	margin 0 0 4%
+
+
+#webdeveloper, 
+#educator, 
+#debater
+	margin 8% 0 0
+
+#educator
+	cf()
+
+.educator
+	col(1,2)
+	padding 0 1%
+.educator-field
+	stack(l)
+	margin 2% 0 8%
+.educator-image
+	stack()
+	margin 20% 0 14%
+
+#books,
+#contact
+	stack(l)
+
+.quotes
+	cf()
+.quotes-testemony	
+	stack(l)
+.quotes-testemony-quote
+	col(3,5)
+.quotes-testemony-author
+	col(2,5)
+	margin 0
+	p
+		margin 0 0 4%
+
+.quotes-testemony-single
+	center(50%)
+
+.l-left-column,
+.l-right-column
+	stack(l)
+	padding 0 2% 6% 2%
+
+endbp(391px)
+bp(390px)
+
+h1
+	font-size 5em
+
+.main-header-title
+	font-size 3em
+
+endbp()
